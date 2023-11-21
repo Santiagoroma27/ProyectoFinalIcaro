@@ -7,12 +7,14 @@ import opencart.pages.LoginPage;
 import opencart.pages.MyAccountPage;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 public class LoginDefinitions {
 
     private LoginPage loginPage;
     private MyAccountPage myAccountPage;
 
-    public LoginDefinitions() {
+    public LoginDefinitions() throws IOException {
         this.loginPage = new LoginPage(Hooks.getDriver());
         this.myAccountPage = new MyAccountPage(Hooks.getDriver());
     }
@@ -24,6 +26,6 @@ public class LoginDefinitions {
 
     @Entonces("se valida que el usuario se encuentra en su cuenta")
     public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
-        Assert.assertEquals(myAccountPage.getTitulo(), "My Account");
+        Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
     }
 }

@@ -15,7 +15,7 @@ public class Hooks {
     private static WebDriver driver;
     private static Properties properties;
 
-    public static WebDriver getDriver() {
+    public static WebDriver getDriver() throws IOException {
         if (driver == null) {
             setup();
         }
@@ -23,23 +23,27 @@ public class Hooks {
     }
 
     @Before
-    public void setup() throws IOException {
+    public static void setup() throws IOException {
         properties = new Properties();
-        properties.load(new FileInputStream(System.getProperty("user.dir") + "/test/resources/config.properties"));
+        properties.load(new FileInputStream(
+                System.getProperty("user.dir") +
+                "/src/test/resources/config.properties"));
         initializeDriver();
     }
 
-    public static WebDriver getDriver() {
-        return driver;
-    }
+
 
     public static String getConfigValue(String key) {
         return properties.getProperty(key);
     }
 
-    private void initializeDriver() {
+    private static void initializeDriver() {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
+    }
+
+    public static void quitDriver() {
+        driver.quit();
     }
 
     @After

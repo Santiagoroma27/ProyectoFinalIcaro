@@ -9,16 +9,19 @@ import opencart.pages.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import java.io.IOException;
+
 public class HomeDefinitions {
 
   private HomePage homePage;
 
-    public HomeDefinitions() {
+
+    public HomeDefinitions() throws IOException {
         this.homePage = new HomePage(Hooks.getDriver());
     }
 
     @Dado("Que el usuario ingresa a la pagina de opencart")
-    public void queElUsuarioIngresaALaPaginaDeOpencart() {
+    public void queElUsuarioIngresaALaPaginaDeOpencart() throws IOException {
        Hooks.getDriver().get(Hooks.getConfigValue("url"));
     }
 
@@ -31,7 +34,7 @@ public class HomeDefinitions {
 
     @Y("el usuario ingresa al login")
     public void elUsuarioIngresaAlLogin() {
-        homePage.IngresaAlLogin();
+        homePage.ingresarAlLogin();
     }
 
     @Cuando("el usuario ingresa credenciales validos")

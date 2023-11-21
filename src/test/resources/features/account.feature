@@ -2,7 +2,7 @@
 
 Característica: Página de Cuenta
   Escenario: Validar la página de cuenta
-    Dado Que el usuario ingresa a la página de opencart
+    Dado que el usuario ingresa a la página de opencart
     Y el usuario ingresa al login
     Cuando el usuario ingresa credenciales válidos
     Y se valida que el usuario se encuentra en su cuenta

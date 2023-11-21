@@ -7,10 +7,14 @@ import opencart.pages.RegisterPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class RegisterTest extends BuyTest {
+import java.io.IOException;
+
+import static hooks.Hooks.getDriver;
+
+public class RegisterTest {
 
     @Test
-    public void createAccount() {
+    public void createAccount() throws IOException {
         HomePage homePage = new HomePage(getDriver());
         RegisterPage registerPage = new RegisterPage(getDriver());
         AccountPage accountPage = new AccountPage(getDriver());

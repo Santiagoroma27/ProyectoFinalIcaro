@@ -1,7 +1,8 @@
 # language: es
 
 Característica: Agregar producto a favoritos
-  Escenario: Usuario agrega producto a favoritos
+
+    Escenario: Usuario agrega producto a favoritos
     Dado Que el usuario ingresa a la pagina de opencart
     Cuando El usuario hace clic en My Account
     Y El usuario hace clic en Login

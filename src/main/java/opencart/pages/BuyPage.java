@@ -21,6 +21,8 @@ public class BuyPage {
     private By cartButton = By.id("cart");
     private By viewCartButton = By.linkText("View Cart");
 
+    private By selectAvailableOption = By.cssSelector("#input-option226");
+
     public BuyPage(WebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -50,4 +52,11 @@ public class BuyPage {
         WebElement viewCartButtonElem = wait.until(ExpectedConditions.elementToBeClickable(viewCartButton));
         viewCartButtonElem.click();
     }
+
+    public Boolean selectedOption(String option){
+        return Boolean.TRUE;
+    }
+
+
+
 }

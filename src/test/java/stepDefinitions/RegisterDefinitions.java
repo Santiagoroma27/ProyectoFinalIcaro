@@ -3,10 +3,13 @@ package stepDefinitions;
 import hooks.Hooks;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
+import io.cucumber.java.es.Y;
 import opencart.pages.AccountPage;
 import opencart.pages.HomePage;
 import opencart.pages.RegisterPage;
 import org.testng.Assert;
+
+import java.io.IOException;
 
 public class RegisterDefinitions {
 
@@ -14,7 +17,7 @@ public class RegisterDefinitions {
     private RegisterPage registerPage;
     private AccountPage accountPage;
 
-    public RegisterDefinitions() {
+    public RegisterDefinitions() throws IOException {
         this.homePage = new HomePage(Hooks.getDriver());
         this.registerPage = new RegisterPage(Hooks.getDriver());
         this.accountPage = new AccountPage(Hooks.getDriver());
@@ -31,9 +34,14 @@ public class RegisterDefinitions {
                 "contraseña");
     }
 
-    @Entonces("se valida que el usuario se encuentra en su cuenta")
-    public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
+    @Entonces("se valida que el usuario se encuentra en su cuenta y nos brinde la descripcion")
+    public void seValidaQueElUsuarioSeEncuentraEnSuCuentaYNosBrindeLaDescripcion() {
         Assert.assertEquals(accountPage.getTitulo(), "Account");
         Assert.assertTrue(accountPage.descriptionIsDisplayed());
+    }
+
+    @Y("el usuario ingresa al registro")
+    public void ElUsuarioIngresaAlRegistro(){
+
     }
 }

@@ -7,12 +7,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.time.Duration;
+
+import static hooks.Hooks.getDriver;
 
 public class LoginTest extends BuyTest {
 
     @Test
-    public void login() {
+    public void login() throws IOException {
         HomePage homePage = new HomePage(getDriver());
         LoginPage loginPage = new LoginPage(getDriver());
         MyAccountPage myAccountPage = new MyAccountPage(getDriver());
@@ -33,7 +36,7 @@ public class LoginTest extends BuyTest {
     }
 
     @Test
-    public void loginFallido() {
+    public void loginFallido() throws IOException {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
         // 1) Navegar a la página de inicio

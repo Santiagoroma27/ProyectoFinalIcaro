@@ -23,10 +23,13 @@ public class LoginPage {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    public static void login(String email, String password) {
-        llenarEmail(email);
-        llenarPassword(password);
-        loguearse();
+    /*
+    ** TODO: estoy cambiando de estatico a privado
+     */
+    public void login(String email, String password) {
+        this.llenarEmail(email);
+        this.llenarPassword(password);
+        this.loguearse();
     }
 
     public void llenarEmail(String email) {
