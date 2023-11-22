@@ -20,28 +20,14 @@ public class HomeDefinitions {
         this.homePage = new HomePage(Hooks.getDriver());
     }
 
-    @Dado("Que el usuario ingresa a la pagina de opencart")
+    @Dado("que el usuario ingresa a la pagina de opencart")
     public void queElUsuarioIngresaALaPaginaDeOpencart() throws IOException {
        Hooks.getDriver().get(Hooks.getConfigValue("url"));
     }
 
-    @Entonces("se valida que el usuario se encuentra en la home")
-    public void seValidaQueElUsuarioSeEncuentraEnLaHome() {
-        Assert.assertEquals(homePage.getTitulo(), "Your Store");
-        Assert.assertTrue(homePage.buscadorEsVisible());
-        Assert.assertTrue(homePage.carrouselEsVisible());
-    }
-
     @Y("el usuario ingresa al login")
-    public void elUsuarioIngresaAlLogin() {
+public void elUsuarioIngresaAlLogin(){
         homePage.ingresarAlLogin();
     }
-
-    @Cuando("el usuario ingresa credenciales validos")
-    public void elUsuarioIngresaCredencialesValidos() {
-        homePage.ingresarAlLogin();
-    }
-
-
 }
 

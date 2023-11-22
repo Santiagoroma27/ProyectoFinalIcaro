@@ -35,26 +35,7 @@ public class WishListDefinitions {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
 
-    @Dado("Que el usuario levanta la página {string}")
-    public void queElUsuarioLevantaLaPagina(String url) {
-        try {
-            getDriver().get(url);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Cuando("El usuario hace clic en My Account")
-    public void elUsuarioHaceClicEnMyAccount() {
-        homePage.ingresarAlLogin();
-    }
-
-    @Y("El usuario hace clic en Login")
-    public void elUsuarioHaceClicEnLogin() {
-        homePage.ingresarAlLogin();
-    }
-
-    @Y("El usuario realiza el login")
+      @Y("El usuario realiza el login")
     public void elUsuarioRealizaElLogin() {
         String username = Hooks.getConfigValue("username");
         String password = Hooks.getConfigValue("password");
@@ -82,10 +63,5 @@ public class WishListDefinitions {
     @Entonces("Se valida que exista un producto en favoritos")
     public void seValidaQueExistaUnProductoEnFavoritos() {
 
-    }
-
-    @Y("Se valida que el producto en la grilla sea {string}")
-    public void seValidaQueElProductoEnLaGrillaSea(String productName) {
-        // Agrega los pasos para validar que el producto en la grilla sea "Canon EOS 5D"
     }
 }

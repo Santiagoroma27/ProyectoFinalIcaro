@@ -23,8 +23,8 @@ public class RegisterDefinitions {
         this.accountPage = new AccountPage(Hooks.getDriver());
     }
 
-    @Cuando("el usuario completa el formulario de registro con datos válidos")
-    public void elUsuarioCompletaElFormularioDeRegistroConDatosVálidos() {
+    @Cuando("el usuario completa el formulario de registro con datos validos")
+    public void elUsuarioCompletaElFormularioDeRegistroConDatosValidos() {
         // Puedo usar Faker o datos fijos según se necesite
         registerPage.completarFormulario(
                 "Nombre",
