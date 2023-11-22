@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import com.github.javafaker.Faker;
 import hooks.Hooks;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
@@ -10,6 +11,8 @@ import opencart.pages.RegisterPage;
 import org.testng.Assert;
 
 import java.io.IOException;
+
+import static hooks.Hooks.getDriver;
 
 public class RegisterDefinitions {
 
@@ -23,25 +26,39 @@ public class RegisterDefinitions {
         this.accountPage = new AccountPage(Hooks.getDriver());
     }
 
-    @Cuando("el usuario completa el formulario de registro con datos validos")
-    public void elUsuarioCompletaElFormularioDeRegistroConDatosValidos() {
-        // Puedo usar Faker o datos fijos según se necesite
-        registerPage.completarFormulario(
-                "Nombre",
-                "Apellido",
-                "email@example.com",
-                "123456789",
-                "contraseña");
-    }
-
-    @Entonces("se valida que el usuario se encuentra en su cuenta y nos brinde la descripcion")
-    public void seValidaQueElUsuarioSeEncuentraEnSuCuentaYNosBrindeLaDescripcion() {
-        Assert.assertEquals(accountPage.getTitulo(), "Account");
-        Assert.assertTrue(accountPage.descriptionIsDisplayed());
-    }
-
     @Y("el usuario ingresa al registro")
     public void ElUsuarioIngresaAlRegistro(){
-
+        public void createAccount() throws IOException {
+            HomePage homePage = new HomePage(getDriver());
+            RegisterPage registerPage = new RegisterPage(getDriver());
+            AccountPage accountPage = new AccountPage(getDriver());
+             }
     }
+    @Cuando("el usuario completa el formulario de registro con datos validos")
+    public void elUsuarioCompletaElFormularioDeRegistroConDatosValidos() {
+        public void createAccount() throws IOException {
+            HomePage homePage = new HomePage(getDriver());
+            RegisterPage registerPage = new RegisterPage(getDriver());
+            AccountPage accountPage = new AccountPage(getDriver());
+
+            Faker faker = new Faker();
+
+            getDriver().get("https://opencart.abstracta.us");
+
+            homePage.ingresarAlRegistro();
+
+            registerPage.completarFormulario(
+                    faker.name().firstName(),
+                    faker.name().lastName(),
+                    faker.internet().emailAddress(),
+                    faker.phoneNumber().phoneNumber(),
+                    faker.internet().password());
+    }
+   @Entonces("se valida que el usuario se encuentra en su cuenta")
+        public void seValidaQueElUsuarioSeEncuentraEnSuCuenta {
+
+            Assert.assertEquals(accountPage.getTitulo(), "Your Store");
+            Assert.assertTrue(accountPage.descriptionIsDisplayed());
+        }
+
 }

@@ -51,8 +51,18 @@ public class WishListDefinitions {
 
     @Y("El usuario agrega un producto a favoritos {string}")
     public void elUsuarioAgregaUnProductoAFavoritos(String productName) {
-        wishlistPage.agregarProductoAFavoritos(productName);
-        Assert.assertTrue(wishlistPage.getAlertSuccess());
+        public void agregarProductoAFavoritos(String productName) {
+            String productId = "0";
+            switch(productName){
+                case "Canon EOS 5D":
+                    productId = "30";
+                    break;
+                default:
+                    productId = "31";
+                    break;
+            }
+        }
+
     }
 
     @Y("El usuario hace clic en Wish List")
@@ -62,6 +72,9 @@ public class WishListDefinitions {
 
     @Entonces("Se valida que exista un producto en favoritos")
     public void seValidaQueExistaUnProductoEnFavoritos() {
+        By selector = By.cssSelector(String.format("button[onclick=\"wishlist.add('%s');\"]", productId));
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
+        element.click();
 
     }
 }

@@ -4,9 +4,8 @@ import hooks.Hooks;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
-import io.cucumber.java.es.Y;
 import opencart.pages.HomePage;
-import org.openqa.selenium.WebDriver;
+import opencart.pages.MyAccountPage;
 import org.testng.Assert;
 
 import java.io.IOException;
@@ -25,9 +24,12 @@ public class HomeDefinitions {
        Hooks.getDriver().get(Hooks.getConfigValue("url"));
     }
 
-    @Y("el usuario ingresa al login")
-public void elUsuarioIngresaAlLogin(){
-        homePage.ingresarAlLogin();
+    @Entonces("se valida que el usuario se encuentra en la home")
+    public void seValidaQueElUsuarioSeEncuentraEnSuCuenta(){
+        MyAccountPage myAccountPage;
+        Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
+        Assert.assertEquals(homePage.getTitulo(), "Your Store");
     }
 }
+
 

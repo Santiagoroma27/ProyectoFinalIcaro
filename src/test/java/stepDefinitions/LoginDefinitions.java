@@ -6,38 +6,41 @@ import io.cucumber.java.es.Entonces;
 
 
 import io.cucumber.java.es.Dado;
-          import org.openqa.selenium.By;
+import io.cucumber.java.es.Y;
+import opencart.pages.LoginPage;
+import opencart.pages.MyAccountPage;
+import org.openqa.selenium.By;
         import org.openqa.selenium.WebDriver;
         import org.openqa.selenium.WebElement;
         import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 
 public class LoginDefinitions {
 
     private WebDriver driver;
 
-//    @Dado("Que el usuario ingresa a la pagina de opencart")
-//    public void queElUsuarioIngresaALaPaginaDeOpencart() {
-//        // Inicializa el navegador web (debes tener ChromeDriver instalado y configurado)
-//        System.setProperty("webdriver.chrome.driver", "C:\\Users\\santi\\Desktop\\ProyectoFinal Icaro\\PrimeraPruebaDeAutomationTest\\drivers\\chromedriver.exe");
-//        driver = new ChromeDriver();
-//        driver.get("https://opencart.abstracta.us/"); // Abre la página de Opencart
-//    }
 
-
+    @Y("el usuario ingresa al login")
+    public void elUsuarioIngresaAlLogin() {
+        homePage.ingresarAlLogin();
+        loginPage.llenarEmail("pepe@pepe.com.ar");
+        loginPage.llenarPassword("12345678");
+        loginPage.loguearse();
+    }
+    
     @Cuando("el usuario ingresa credenciales validas")
     public void elUsuarioIngresaCredencialesValidas() {
-        WebElement usernameField = driver.findElement(By.id("username")); // Encuentra el campo de nombre de usuario
-        WebElement passwordField = driver.findElement(By.id("password")); // Encuentra el campo de contraseña
-        WebElement loginButton = driver.findElement(By.id("loginButton")); // Encuentra el botón de inicio de sesión
+        LoginPage loginPage;
+        loginPage.llenarEmail("pepe@pepe.com.ar");
+        loginPage.llenarPassword("12345678");
+        loginPage.loguearse();
 
-        usernameField.sendKeys("tu_nombre_de_usuario"); // Ingresa tu nombre de usuario
-        passwordField.sendKeys("tu_contraseña"); // Ingresa tu contraseña
-        loginButton.click(); // Haz clic en el botón de inicio de sesión
     }
 
     @Entonces("se valida que el usuario se encuentra en su cuenta")
     public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
-        WebElement text = driver.findElement(By.cssSelector("#logo > h1 > a"));
+        MyAccountPage myAccountPage;
+        Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
     }
 
     public void afterScenario() {
