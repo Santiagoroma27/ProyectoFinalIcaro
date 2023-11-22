@@ -7,6 +7,7 @@ import io.cucumber.java.es.Entonces;
 
 import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Y;
+import opencart.pages.HomePage;
 import opencart.pages.LoginPage;
 import opencart.pages.MyAccountPage;
 import org.openqa.selenium.By;
@@ -22,6 +23,7 @@ public class LoginDefinitions {
 
     @Y("el usuario ingresa al login")
     public void elUsuarioIngresaAlLogin() {
+        HomePage homePage;
         homePage.ingresarAlLogin();
         loginPage.llenarEmail("pepe@pepe.com.ar");
         loginPage.llenarPassword("12345678");
@@ -31,10 +33,7 @@ public class LoginDefinitions {
     @Cuando("el usuario ingresa credenciales validas")
     public void elUsuarioIngresaCredencialesValidas() {
         LoginPage loginPage;
-        loginPage.llenarEmail("pepe@pepe.com.ar");
-        loginPage.llenarPassword("12345678");
-        loginPage.loguearse();
-
+        loginPage.login("pepe@pepe.com.ar","12345678");
     }
 
     @Entonces("se valida que el usuario se encuentra en su cuenta")

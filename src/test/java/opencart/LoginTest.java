@@ -27,9 +27,7 @@ public class LoginTest extends BuyTest {
         homePage.ingresarAlLogin();
 
         // 4) Realizar el login
-        loginPage.llenarEmail("pepe@pepe.com.ar");
-        loginPage.llenarPassword("12345678");
-        loginPage.loguearse();
+        loginPage.login("pepe@pepe.com.ar","12345678");
 
         // 5) Validar que se haya iniciado sesión correctamente
         Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
