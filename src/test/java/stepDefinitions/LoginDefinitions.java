@@ -23,22 +23,19 @@ public class LoginDefinitions {
 
     @Y("el usuario ingresa al login")
     public void elUsuarioIngresaAlLogin() {
-        HomePage homePage;
+        HomePage homePage = null;
         homePage.ingresarAlLogin();
-        loginPage.llenarEmail("pepe@pepe.com.ar");
-        loginPage.llenarPassword("12345678");
-        loginPage.loguearse();
     }
     
     @Cuando("el usuario ingresa credenciales validas")
     public void elUsuarioIngresaCredencialesValidas() {
-        LoginPage loginPage;
+        LoginPage loginPage = null;
         loginPage.login("pepe@pepe.com.ar","12345678");
     }
 
     @Entonces("se valida que el usuario se encuentra en su cuenta")
     public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
-        MyAccountPage myAccountPage;
+        MyAccountPage myAccountPage = null;
         Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
     }
 

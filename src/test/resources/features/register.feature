@@ -7,3 +7,5 @@ Característica: Registro de Usuario
   Y el usuario ingresa al registro
   Cuando el usuario completa el formulario de registro con datos validos
   Entonces se valida que el usuario se encuentra en su cuenta
+
+
