@@ -6,7 +6,7 @@ import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
 import io.cucumber.java.es.Y;
 import opencart.pages.AccountPage;
-import opencart.pages.BuyPage;
+
 import opencart.pages.HomePage;
 import opencart.pages.RegisterPage;
 import org.testng.Assert;
@@ -17,12 +17,11 @@ import static hooks.Hooks.getDriver;
 
 public class RegisterDefinitions {
 
-    private HomePage homePage;
     private RegisterPage registerPage;
     private AccountPage accountPage;
 
     public RegisterDefinitions() throws IOException {
-        this.homePage = new HomePage(Hooks.getDriver());
+        HomePage homePage = new HomePage(Hooks.getDriver());
         this.registerPage = new RegisterPage(Hooks.getDriver());
         this.accountPage = new AccountPage(Hooks.getDriver());
     }

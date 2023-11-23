@@ -19,7 +19,7 @@ public class HomeDefinitions {
 
     @Dado("que el usuario ingresa a la pagina de opencart")
     public void queElUsuarioIngresaALaPaginaDeOpencart() throws IOException {
-       Hooks.getDriver().get(Hooks.getConfigValue("url"));
+       Hooks.getDriver().get(Hooks.getProperties().getProperty());
     }
 
     @Entonces("se valida que el usuario se encuentra en la home")

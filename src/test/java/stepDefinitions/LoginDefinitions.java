@@ -1,13 +1,8 @@
 package stepDefinitions;
 
+import hooks.Hooks;
 import io.cucumber.java.es.Cuando;
 import io.cucumber.java.es.Entonces;
-
-
-
-
-import io.cucumber.java.es.Y;
-import opencart.pages.HomePage;
 import opencart.pages.LoginPage;
 import opencart.pages.MyAccountPage;
 
@@ -15,7 +10,7 @@ import opencart.pages.MyAccountPage;
 import org.testng.Assert;
 public class LoginDefinitions {
 
-    private WebDriver driver;
+    private final WebDriver driver;
 
 
     public LoginDefinitions(WebDriver driver) {
@@ -25,8 +20,7 @@ public class LoginDefinitions {
 
     @Cuando("el usuario ingresa credenciales validas")
     public void elUsuarioIngresaCredencialesValidas() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login("pepe@pepe.com.ar","12345678");
+        Hooks.getDriver().get(Hooks.getProperties().getPropert());
     }
 
     @Entonces("se valida que el usuario se encuentra en su cuenta")
@@ -35,9 +29,9 @@ public class LoginDefinitions {
         Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
     }
 
-    public void afterScenario() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
+//    public void afterScenario() {
+//        if (driver != null) {
+//            driver.quit();
+//        }
+//    }
 }

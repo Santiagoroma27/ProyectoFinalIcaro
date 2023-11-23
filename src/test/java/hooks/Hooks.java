@@ -29,11 +29,17 @@ public class Hooks {
                 System.getProperty("user.dir") +
                 "/src/test/resources/config.properties"));
         initializeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+        System.setProperty("webdriver.chrome.driver",
+                System.getProperty("user.dir") + "\\drivers\\chromedriver.exe");
+
+        options.addArguments("start-maximized");
+        options.addArguments("incognito");
     }
 
-
-
     public static String getConfigValue(String key) {
+
         return properties.getProperty(key);
     }
 
@@ -46,11 +52,14 @@ public class Hooks {
         driver.quit();
     }
 
+    public static Properties getProperties() {
+        return properties;
+    }
+
     @After
     public void tearDown() {
         if (driver != null) {
             driver.quit();
-            driver = null;
-        }
+           }
     }
 }
