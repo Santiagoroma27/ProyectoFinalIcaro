@@ -9,7 +9,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.openqa.selenium.WebDriver;
 
 import java.io.IOException;
@@ -18,7 +17,7 @@ import java.time.Duration;
 import static hooks.Hooks.getDriver;
 
 
-public class WishListDefinitions {
+public class WishlistDefinitions {
 
     private HomePage homePage;
     private LoginPage loginPage;
@@ -27,7 +26,7 @@ public class WishListDefinitions {
     private WebDriverWait wait;
     private By cameraLink = By.cssSelector("#content > div:nth-child(3) > div:nth-child(1) > div > div.image");
 
-    public WishListDefinitions() throws IOException {
+    public WishlistDefinitions() throws IOException {
         this.homePage = new HomePage(getDriver());
         this.loginPage = new LoginPage(getDriver());
         this.wishlistPage = new WishlistPage(getDriver());

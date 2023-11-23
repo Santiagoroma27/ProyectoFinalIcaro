@@ -35,4 +35,8 @@ public class AccountPage {
         return descriptionElem.isDisplayed();
 
     }
+
+    public WebElement getLogo() {
+        return driver.findElement(By.cssSelector(".header-logo"));
+    }
 }

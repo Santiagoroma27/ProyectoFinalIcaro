@@ -28,36 +28,27 @@ public class RegisterDefinitions {
     }
 
     @Y("el usuario ingresa al registro")
-    public void ElUsuarioIngresaAlRegistro()throws IOException {
-        RegisterPage registerPage = new RegisterPage(Hooks.getDriver());
-        registerPage.();
+    public void elUsuarioIngresaAlRegistro() throws IOException {
+        getDriver().get("https://opencart.abstracta.us/index.php?route=account/register");
     }
 
     @Cuando("el usuario completa el formulario de registro con datos validos")
-    public void elUsuarioCompletaElFormularioDeRegistroConDatosValidos() {
-        public void createAccount() throws IOException {
-            HomePage homePage = new HomePage(getDriver());
-            RegisterPage registerPage = new RegisterPage(getDriver());
-            AccountPage accountPage = new AccountPage(getDriver());
+    public void elUsuarioCompletaElFormularioDeRegistroConDatosValidos() throws IOException {
+        Faker faker = new Faker();
 
-            Faker faker = new Faker();
+        getDriver().get("https://opencart.abstracta.us");
 
-            getDriver().get("https://opencart.abstracta.us");
-
-            homePage.ingresarAlRegistro();
-
-            registerPage.completarFormulario(
-                    faker.name().firstName(),
-                    faker.name().lastName(),
-                    faker.internet().emailAddress(),
-                    faker.phoneNumber().phoneNumber(),
-                    faker.internet().password());
+        registerPage.completarFormulario(
+                faker.name().firstName(),
+                faker.name().lastName(),
+                faker.internet().emailAddress(),
+                faker.phoneNumber().phoneNumber(),
+                faker.internet().password());
     }
-   @Entonces("se valida que el usuario se encuentra en su cuenta")
-        public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
 
-            Assert.assertEquals(accountPage.getTitulo(), "Your Store");
-            Assert.assertTrue(accountPage.descriptionIsDisplayed());
-        }
-
+    @Entonces("se valida que el usuario se encuentra en su cuenta")
+    public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
+        Assert.assertTrue(accountPage.getTitulo().contains("My Account"));
+        Assert.assertTrue(accountPage.getLogo().getText().contains("Your Store"));
+    }
 }
