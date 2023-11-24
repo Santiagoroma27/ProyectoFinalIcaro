@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class HomeDefinitions {
 
-  private HomePage homePage;
+    private HomePage homePage;
 
 
     public HomeDefinitions() throws IOException {
@@ -19,21 +19,13 @@ public class HomeDefinitions {
 
     @Dado("que el usuario ingresa a la pagina de opencart")
     public void queElUsuarioIngresaALaPaginaDeOpencart() throws IOException {
-       Hooks.getDriver().get(Hooks.getProperties().getProperty());
+        Hooks.getDriver().get(Hooks.getConfigValue("url"));
     }
 
     @Entonces("se valida que el usuario se encuentra en la home")
-    public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
-        MyAccountPage myAccountPage = homePage.getMyAccountPage();
-        Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
-        Assert.assertEquals(homePage.getTitulo(), "Your Store");
+    public void seValidaQueElUsuarioSeEncuentraEnLaHome() {
+        String myHomePage = homePage.getTitulo();
+        Assert.assertEquals(myHomePage, "Your Store");
     }
 
-    @Y("el usuario ingresa al login")
-    public void elUsuarioIngresaAlLogin() {
-        HomePage homePage = new HomePage(driver);
-        homePage.ingresarAlLogin();
-    }
 }
-
-

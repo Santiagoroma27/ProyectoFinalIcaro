@@ -50,7 +50,7 @@ public class WishlistDefinitions {
 
     @Y("El usuario agrega un producto a favoritos {string}")
     public void elUsuarioAgregaUnProductoAFavoritos(String productName) {
-        public void agregarProductoAFavoritos(String productName) {
+
             String productId = "0";
             switch(productName){
                 case "Canon EOS 5D":
@@ -62,7 +62,7 @@ public class WishlistDefinitions {
             }
         }
 
-    }
+
 
     @Y("El usuario hace clic en Wish List")
     public void elUsuarioHaceClicEnWishList() {
@@ -70,7 +70,7 @@ public class WishlistDefinitions {
     }
 
     @Entonces("Se valida que exista un producto en favoritos")
-    public void seValidaQueExistaUnProductoEnFavoritos() {
+    public void seValidaQueExistaUnProductoEnFavoritos(String productId) {
         By selector = By.cssSelector(String.format("button[onclick=\"wishlist.add('%s');\"]", productId));
         WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(selector));
         element.click();

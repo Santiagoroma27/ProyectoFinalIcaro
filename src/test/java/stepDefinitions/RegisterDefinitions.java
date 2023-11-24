@@ -3,6 +3,7 @@ package stepDefinitions;
 import com.github.javafaker.Faker;
 import hooks.Hooks;
 import io.cucumber.java.es.Cuando;
+import io.cucumber.java.es.Dado;
 import io.cucumber.java.es.Entonces;
 import io.cucumber.java.es.Y;
 import opencart.pages.AccountPage;
@@ -19,13 +20,18 @@ public class RegisterDefinitions {
 
     private RegisterPage registerPage;
     private AccountPage accountPage;
+    private HomePage homePage;
 
     public RegisterDefinitions() throws IOException {
-        HomePage homePage = new HomePage(Hooks.getDriver());
+        this.homePage = new HomePage(Hooks.getDriver());
         this.registerPage = new RegisterPage(Hooks.getDriver());
         this.accountPage = new AccountPage(Hooks.getDriver());
     }
 
+    @Dado("que el usuario ingresa a la pagina web")
+    public void queElUsuarioIngresaALaWeb() throws IOException {
+        Hooks.getDriver().get(homePage.getTitulo());
+    }
     @Y("el usuario ingresa al registro")
     public void elUsuarioIngresaAlRegistro() throws IOException {
         getDriver().get("https://opencart.abstracta.us/index.php?route=account/register");
@@ -45,8 +51,8 @@ public class RegisterDefinitions {
                 faker.internet().password());
     }
 
-    @Entonces("se valida que el usuario se encuentra en su cuenta")
-    public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
+    @Entonces("se valida que el usuario esta donde debe estar")
+    public void seValidaQueElUsuarioEstaDondeDebeEstar() {
         Assert.assertTrue(accountPage.getTitulo().contains("My Account"));
         Assert.assertTrue(accountPage.getLogo().getText().contains("Your Store"));
     }

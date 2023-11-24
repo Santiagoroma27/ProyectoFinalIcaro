@@ -8,6 +8,9 @@ import opencart.pages.MyAccountPage;
 
         import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+
+import java.io.IOException;
+
 public class LoginDefinitions {
 
     private final WebDriver driver;
@@ -18,16 +21,16 @@ public class LoginDefinitions {
     }
 
 
-    @Cuando("el usuario ingresa credenciales validas")
-    public void elUsuarioIngresaCredencialesValidas() {
-        Hooks.getDriver().get(Hooks.getProperties().getPropert());
-    }
-
-    @Entonces("se valida que el usuario se encuentra en su cuenta")
-    public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
-        MyAccountPage myAccountPage = new MyAccountPage(driver);
-        Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
-    }
+//    @Cuando("el usuario ingresa credenciales validas")
+//    public void elUsuarioIngresaCredencialesValidas() throws IOException {
+//        Hooks.getDriver().get();
+//    }
+//
+//    @Entonces("se valida que el usuario se encuentra en su cuenta")
+//    public void seValidaQueElUsuarioSeEncuentraEnSuCuenta() {
+//        MyAccountPage myAccountPage = new MyAccountPage(driver);
+//        Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
+//    }
 
 //    public void afterScenario() {
 //        if (driver != null) {
