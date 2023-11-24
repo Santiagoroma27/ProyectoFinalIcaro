@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public class HomeDefinitions {
 
-    private HomePage homePage;
+  private HomePage homePage;
 
 
     public HomeDefinitions() throws IOException {
@@ -19,7 +19,7 @@ public class HomeDefinitions {
 
     @Dado("que el usuario ingresa a la pagina de opencart")
     public void queElUsuarioIngresaALaPaginaDeOpencart() throws IOException {
-        Hooks.getDriver().get(Hooks.getConfigValue("url"));
+       Hooks.getDriver().get(Hooks.getConfigValue("url"));
     }
 
     @Entonces("se valida que el usuario se encuentra en la home")
@@ -29,3 +29,5 @@ public class HomeDefinitions {
     }
 
 }
+
+

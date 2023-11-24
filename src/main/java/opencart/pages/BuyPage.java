@@ -52,6 +52,10 @@ public class BuyPage {
         WebElement viewCartButtonElem = wait.until(ExpectedConditions.elementToBeClickable(viewCartButton));
         viewCartButtonElem.click();
     }
+    public void validateProduct() {
+        // llename de codigo
+
+    }
 
     public Boolean selectedOption(String option){
         return Boolean.TRUE;

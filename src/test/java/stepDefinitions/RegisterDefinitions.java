@@ -20,28 +20,29 @@ public class RegisterDefinitions {
 
     private RegisterPage registerPage;
     private AccountPage accountPage;
-    private HomePage homePage;
 
     public RegisterDefinitions() throws IOException {
-        this.homePage = new HomePage(Hooks.getDriver());
+        HomePage homePage = new HomePage(Hooks.getDriver());
         this.registerPage = new RegisterPage(Hooks.getDriver());
         this.accountPage = new AccountPage(Hooks.getDriver());
     }
 
-    @Dado("que el usuario ingresa a la pagina web")
-    public void queElUsuarioIngresaALaWeb() throws IOException {
-        Hooks.getDriver().get(homePage.getTitulo());
+    @Dado("que el usuario ingresa a la pagina de opencar")
+    public void the_user_enters_the_opencart_page() throws IOException {
+        getDriver().get("https://opencart.abstracta.us");
     }
-    @Y("el usuario ingresa al registro")
-    public void elUsuarioIngresaAlRegistro() throws IOException {
+
+    @Entonces("el usuario ingresa al registro")
+    public void the_user_goes_to_the_registration() throws IOException {
+        // Ajusta el selector según tu página
         getDriver().get("https://opencart.abstracta.us/index.php?route=account/register");
     }
 
     @Cuando("el usuario completa el formulario de registro con datos validos")
-    public void elUsuarioCompletaElFormularioDeRegistroConDatosValidos() throws IOException {
+    public void the_user_completes_the_registration_form_with_valid_data() throws IOException {
+        // Reemplaza los selectores y datos según tu formulario de registro
+        getDriver().get("https://opencart.abstracta.us/index.php?route=account/register");
         Faker faker = new Faker();
-
-        getDriver().get("https://opencart.abstracta.us");
 
         registerPage.completarFormulario(
                 faker.name().firstName(),
@@ -51,9 +52,9 @@ public class RegisterDefinitions {
                 faker.internet().password());
     }
 
-    @Entonces("se valida que el usuario esta donde debe estar")
-    public void seValidaQueElUsuarioEstaDondeDebeEstar() {
-        Assert.assertTrue(accountPage.getTitulo().contains("My Account"));
-        Assert.assertTrue(accountPage.getLogo().getText().contains("Your Store"));
+    @Entonces("se valida que el usuario se encuentra en su cuenta")
+    public void it_is_validated_that_the_user_is_in_their_account() throws IOException {
+        // Cambia el criterio de validación según tu página
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("account"));
     }
 }

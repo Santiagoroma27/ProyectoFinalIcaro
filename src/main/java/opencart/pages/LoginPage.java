@@ -14,6 +14,10 @@ public class LoginPage {
     By passwordInput = By.id("input-password");
     By loginForm = By.xpath("//input[@type='submit' and @value='Login']");
 
+    By userIcon = By.cssSelector("#top-links > ul > li.dropdown > a > i");
+    By loginIcon = By.cssSelector("#top-links > ul > li.dropdown.open > ul > li:nth-child(2) > a");
+
+    By textLogin = By.cssSelector("#content > div > div:nth-child(2) > div > h2");
     WebDriver driver;
 
     WebDriverWait wait;
@@ -45,5 +49,15 @@ public class LoginPage {
     public void loguearse() {
         WebElement loginFormElem = wait.until(ExpectedConditions.elementToBeClickable(loginForm));
         loginFormElem.click();
+    }
+    public void irLoginScreen() {
+        WebElement user =  wait.until(ExpectedConditions.elementToBeClickable(userIcon));
+        user.click();
+        WebElement l = wait.until(ExpectedConditions.elementToBeClickable(loginIcon));
+        l.click();
+    }
+    public String textLoginPage() {
+        WebElement l = wait.until(ExpectedConditions.visibilityOfElementLocated(textLogin));
+        return l.getText();
     }
 }
