@@ -57,15 +57,13 @@ public class BuyDefinitions {
 
     @Y("el usuario entra al carrito")
     public void el_usuario_entra_al_carrito() {
-        // Ajusta el selector para navegar al carrito de compras
         buyPage.goToCart();
         Assert.assertEquals(1,1);
     }
 
     @Entonces("se valida que exista un producto en el carrito")
     public void se_valida_que_exista_un_producto_en_el_carrito() {
-        // Valida que el carrito contenga al menos un producto
-        buyPage.validateProduct(); // No se que mierda queres hacer aca
+        buyPage.validateProduct();
         Assert.assertEquals(1,1);
     }
 

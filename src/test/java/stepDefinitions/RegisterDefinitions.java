@@ -54,7 +54,7 @@ public class RegisterDefinitions {
 
     @Entonces("se valida que el usuario se encuentra en su cuenta")
     public void it_is_validated_that_the_user_is_in_their_account() throws IOException {
-        // Cambia el criterio de validación según tu página
+
         Assert.assertTrue(getDriver().getCurrentUrl().contains("account"));
     }
 }

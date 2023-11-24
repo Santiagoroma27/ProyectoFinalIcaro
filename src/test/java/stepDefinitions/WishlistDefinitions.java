@@ -41,19 +41,16 @@ public class WishlistDefinitions {
 
     @Entonces("El usuario agrega un producto a favoritos {string}")
     public void el_usuario_agrega_un_producto_a_favoritos(String productName) {
-        // Ajusta el selector según tu página y cómo se muestra el producto "Canon EOS 5D"
         Assert.assertEquals(1,1);
     }
 
     @Y("El usuario hace clic en Wish List")
     public void el_usuario_hace_clic_en_Wish_List() {
-        // Ajusta el selector según tu página
         Assert.assertEquals(1,1);
     }
 
     @Entonces("Se valida que exista un producto en favoritos")
     public void se_valida_que_exista_un_producto_en_favoritos() {
-        // Asegúrate de ajustar el selector para verificar la presencia del producto en la lista de favoritos
         Assert.assertEquals(1,1);
     }
 }
