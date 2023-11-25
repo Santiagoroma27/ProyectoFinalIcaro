@@ -17,8 +17,6 @@ public class BuyTest {
 
     private BuyPage buyPage;
 
-
-
     @Given("The user opens the page {string}")
     public void theUserOpensThePage(String url) throws IOException {
         Hooks.getDriver().get(url);

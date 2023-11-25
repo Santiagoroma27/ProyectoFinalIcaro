@@ -29,28 +29,29 @@ public class BuyDefinitions {
     }
     @Dado("que el usuario ingresa a la pagina")
     public void que_el_usuario_ingresa_a_la_pagina_de_opencart() throws IOException {
-        getDriver().get("https://opencart.abstracta.us/"); // Cambia esto por la URL de tu página de OpenCart
-        Assert.assertEquals(1,1);
+        driver.get("https://opencart.abstracta.us/");
+        String actualURL = driver.getCurrentUrl();
+        Assert.assertEquals(actualURL, "https://opencart.abstracta.us/");
     }
 
     @Entonces("el usuario se registra")
     public void el_usuario_se_registra() throws IOException {
-        // Ajusta el selector según tu página
         registerDefinition.the_user_completes_the_registration_form_with_valid_data();
-        Assert.assertEquals(1,1);
+        String actualURL = driver.getCurrentUrl();
+        Assert.assertEquals(actualURL, "https://opencart.abstracta.us/");
     }
 
 
     @Y("El usuario ingresa a la sección Cameras")
     public void el_usuario_ingresa_a_la_seccion_Cameras() throws IOException {
-        // Ajusta el selector para navegar a la sección de cámaras
+        // Selector cambiado... Quiero vovler a revisarlo en un rato para ver si cambio el selector por otro y sigue corriendo!
         buyPage.goToCameras();
         Assert.assertEquals(1,1);
     }
 
     @Y("el usuario agrega un producto al carrito")
     public void el_usuario_agrega_un_producto_al_carrito() throws IOException {
-        // Ajusta el selector para agregar un producto específico al carrito
+        // Selector cambiado... Quiero vovler a revisarlo en un rato para ver si cambio el selector por otro y sigue corriendo!
         buyPage.addToCart();
         Assert.assertEquals(1,1);
     }

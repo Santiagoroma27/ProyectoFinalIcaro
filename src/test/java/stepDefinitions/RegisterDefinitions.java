@@ -34,14 +34,13 @@ public class RegisterDefinitions {
 
     @Entonces("el usuario ingresa al registro")
     public void the_user_goes_to_the_registration() throws IOException {
-        // Ajusta el selector según tu página
+        // Selector eliminado.. Volveré en breve!
         getDriver().get("https://opencart.abstracta.us/index.php?route=account/register");
     }
 
     @Cuando("el usuario completa el formulario de registro con datos validos")
     public void the_user_completes_the_registration_form_with_valid_data() throws IOException {
-        // Reemplaza los selectores y datos según tu formulario de registro
-        getDriver().get("https://opencart.abstracta.us/index.php?route=account/register");
+                getDriver().get("https://opencart.abstracta.us/index.php?route=account/register");
         Faker faker = new Faker();
 
         registerPage.completarFormulario(

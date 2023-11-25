@@ -60,4 +60,11 @@ public class LoginPage {
         WebElement l = wait.until(ExpectedConditions.visibilityOfElementLocated(textLogin));
         return l.getText();
     }
+
+    public void setEmail(String mail) {
+
+    }
+
+    public void setPassword(String number) {
+    }
 }

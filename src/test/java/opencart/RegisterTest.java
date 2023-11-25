@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import static hooks.Hooks.getDriver;
 
-public class RegisterTest {
+public class opRegisterTest {
 
     @Test
     public void createAccount() throws IOException {

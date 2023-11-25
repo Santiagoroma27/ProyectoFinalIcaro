@@ -30,6 +30,8 @@ public class LoginTest extends BuyTest {
         loginPage.login("pepe@pepe.com.ar","12345678");
 
         // 5) Validar que se haya iniciado sesión correctamente
+        MyAccountPage myAccountPage = new MyAccountPage(getDriver());
+
         Assert.assertEquals(myAccountPage.obtenerTitulo(), "My Account");
     }
 
