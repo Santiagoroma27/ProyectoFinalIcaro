@@ -62,5 +62,9 @@ public class BuyPage {
     }
 
 
+    public String getProductName() {
+        WebElement productNameElement = driver.findElement(By.xpath("//*[@id=\"content\"]/div[2]/div[1]/div/div[1]/a/img"));
+        return productNameElement.getAttribute("Canon EOS 5D");
+    }
 
 }

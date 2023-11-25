@@ -65,7 +65,8 @@ public class BuyDefinitions {
     @Entonces("se valida que exista un producto en el carrito")
     public void se_valida_que_exista_un_producto_en_el_carrito() {
         buyPage.validateProduct();
-        Assert.assertEquals(1,1);
+        String productName = buyPage.getProductName();
+        Assert.assertNotNull(productName);
     }
 
 }
