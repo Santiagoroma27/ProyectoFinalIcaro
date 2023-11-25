@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+
 public class MyAccountPage {
     By title = By.xpath("//h2[text()='My Account']");
 
@@ -17,8 +19,4 @@ public class MyAccountPage {
         this.driver = driver;
     }
 
-    public String getTitulo(){
-        WebElement titleElem = wait.until(ExpectedConditions.visibilityOfElementLocated());
-        return titleElem.getText();
-    }
 }
