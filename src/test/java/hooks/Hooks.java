@@ -24,6 +24,8 @@ public class Hooks {
 
     @Before
     public static void setup() throws IOException {
+
+
         properties = new Properties();
         properties.load(new FileInputStream(
                 System.getProperty("user.dir") +
@@ -36,7 +38,6 @@ public class Hooks {
     }
 
     public static String getConfigValue(String key) {
-
         return properties.getProperty(key);
     }
 

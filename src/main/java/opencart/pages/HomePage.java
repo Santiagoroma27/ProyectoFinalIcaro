@@ -67,4 +67,13 @@ public class HomePage {
         WebElement carrouselElement = wait.until(ExpectedConditions.visibilityOfElementLocated(carrousel));
         return carrouselElement.isDisplayed();
     }
+
+    public void clickOnCamerasButton() {
+
+        By camerasButton = By.linkText("Cameras");
+
+
+        driver.findElement(camerasButton).click();
+    }
+
 }
