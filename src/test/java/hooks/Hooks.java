@@ -12,10 +12,21 @@ import java.util.Properties;
 
 public class Hooks {
 
-    private static WebDriver driver;
+    private WebDriver driver;
     private static Properties properties;
 
-    public static WebDriver getDriver() throws IOException {
+    static {
+        properties = new Properties();
+        try {
+            properties.load(new FileInputStream(
+                    System.getProperty("user.dir") +
+                            "/src/test/resources/config.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public WebDriver getDriver() {
         if (driver == null) {
             setup();
         }
@@ -23,43 +34,25 @@ public class Hooks {
     }
 
     @Before
-    public static void setup() throws IOException {
-
-
-        properties = new Properties();
-        properties.load(new FileInputStream(
-                System.getProperty("user.dir") +
-                "/src/test/resources/config.properties"));
+    public void setup() {
         initializeDriver();
-//        System.setProperty("webdriver.chrome.driver",
-//                System.getProperty("user.dir") + "\\drivers\\chromedriver.exe");
-
-
     }
 
-    public static String getConfigValue(String key) {
-        return properties.getProperty(key);
-    }
-
-    private static void initializeDriver() {
+    private void initializeDriver() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--start-maximized");
         options.addArguments("--incognito");
         driver = new ChromeDriver(options);
     }
 
-    public static void quitDriver() {
-        driver.quit();
-    }
-
-    public static Properties getProperties() {
-        return properties;
-    }
-
     @After
     public void tearDown() {
         if (driver != null) {
             driver.quit();
-           }
+        }
+    }
+
+    public static String getConfigValue(String key) {
+        return properties.getProperty(key);
     }
 }

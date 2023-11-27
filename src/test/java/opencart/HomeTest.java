@@ -1,25 +1,28 @@
 package opencart;
 
+import hooks.Hooks;
 import opencart.pages.HomePage;
-
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
+public class HomeTest {
 
-import static hooks.Hooks.getDriver;
+    private WebDriver driver;
+    private HomePage homePage;
 
-public class HomeTest extends BuyTest {
+    public HomeTest() {
+        Hooks hooks = new Hooks();
+        this.driver = hooks.getDriver();
+        this.homePage = new HomePage(driver);
+    }
 
     @Test
-    public void validarHome() throws IOException {
-        HomePage homePage = new HomePage(getDriver());
-
-        getDriver().get("https://opencart.abstracta.us");
+    public void validarHome() {
+        driver.get("https://opencart.abstracta.us");
 
         Assert.assertEquals(homePage.getTitulo(), "Your Store");
         Assert.assertTrue(homePage.buscadorEsVisible());
         Assert.assertTrue(homePage.carrouselEsVisible());
     }
-
 }

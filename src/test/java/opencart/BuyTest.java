@@ -1,25 +1,25 @@
-// BuyTest.java
-
 package opencart;
 
 import hooks.Hooks;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
+import opencart.pages.BuyPage;
+import org.openqa.selenium.WebDriver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import opencart.pages.BuyPage;
-import opencart.pages.LoginPage;
-import org.apache.commons.exec.CommandLine;
-
-import java.io.IOException;
 
 public class BuyTest {
 
     private BuyPage buyPage;
+    private WebDriver driver;
+
+    public BuyTest() {
+        Hooks hooks = new Hooks();
+        this.driver = hooks.getDriver();
+        this.buyPage = new BuyPage(driver);
+    }
 
     @Given("The user opens the page {string}")
-    public void theUserOpensThePage(String url) throws IOException {
-        Hooks.getDriver().get(url);
+    public void theUserOpensThePage(String url) {
+        driver.get(url);
     }
 
     @When("The user clicks on Cameras")
@@ -48,4 +48,4 @@ public class BuyTest {
         buyPage.viewCart();
     }
 
-  }
+}

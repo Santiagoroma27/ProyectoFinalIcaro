@@ -4,24 +4,31 @@ import com.github.javafaker.Faker;
 import opencart.pages.AccountPage;
 import opencart.pages.HomePage;
 import opencart.pages.RegisterPage;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import hooks.Hooks;
 
-import java.io.IOException;
+public class RegisterTest {
 
-import static hooks.Hooks.getDriver;
+    private WebDriver driver;
+    private HomePage homePage;
+    private RegisterPage registerPage;
+    private AccountPage accountPage;
 
-public class opRegisterTest {
+    public RegisterTest() {
+        Hooks hooks = new Hooks();
+        this.driver = hooks.getDriver();
+        this.homePage = new HomePage(driver);
+        this.registerPage = new RegisterPage(driver);
+        this.accountPage = new AccountPage(driver);
+    }
 
     @Test
-    public void createAccount() throws IOException {
-        HomePage homePage = new HomePage(getDriver());
-        RegisterPage registerPage = new RegisterPage(getDriver());
-        AccountPage accountPage = new AccountPage(getDriver());
-
+    public void createAccount() {
         Faker faker = new Faker();
 
-        getDriver().get("https://opencart.abstracta.us");
+        driver.get("https://opencart.abstracta.us");
 
         homePage.ingresarAlRegistro();
 

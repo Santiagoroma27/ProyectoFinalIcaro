@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class LoginPage {
 
@@ -61,10 +62,26 @@ public class LoginPage {
         return l.getText();
     }
 
-    public void setEmail(String mail) {
-
+    public void setEmail(String email) {
+        WebElement emailElem = wait.until(ExpectedConditions.visibilityOfElementLocated(emailInput));
+        emailElem.sendKeys(email);
     }
 
-    public void setPassword(String number) {
+    public void setPassword(String password) {
+        WebElement passElem = wait.until(ExpectedConditions.visibilityOfElementLocated(passwordInput));
+        passElem.sendKeys(password);
+    }
+
+    public boolean isMyAccountPagePresent() {
+        // Buscar todos los elementos h2 en la página
+        List<WebElement> h2Elements = driver.findElements(By.tagName("h2"));
+
+        // Revisar si alguno de los elementos h2 tiene el texto "My Account"
+        for (WebElement element : h2Elements) {
+            if (element.getText().equals("My Account")) {
+                return true; // Retorna true si encuentra un h2 con el texto "My Account"
+            }
+        }
+        return false; // Retorna false si no encuentra ningún h2 con ese texto
     }
 }
